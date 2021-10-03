@@ -1,0 +1,27 @@
+ion-slide {
+  height: 100vh;
+  flex-direction: column;
+}
+
+ion-content {
+  --background: var(--ion-color-secondary);
+  --ion-text-color: #fff;
+}
+
+ion-img {
+  margin-top: 20px;
+}
+
+h2{
+  margin-top: 50px;
+  line-height: normal;
+}
+
+.image-m {
+  width: 200px;
+  height: 200px;
+}
+
+.slider {
+
+}

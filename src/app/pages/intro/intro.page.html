@@ -1,0 +1,36 @@
+
+
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <ion-slides pager="true" #slide>
+    <ion-slide>
+      <ion-img src="./assets/img/movie.png"></ion-img>
+      <h2 class="ion-padding">به بانک اطلاعاتی فیلم و سریال خوش آمدید</h2>
+        <p>بهترین نرم افزار جستجوی اطلاعات فیلم‌های خارجی</p>
+        <ion-button expand="true" (click)="next()" color="light">
+          سایر اپلیکیشن‌های توسعه دهنده
+        </ion-button>
+
+    </ion-slide>
+
+    <ion-slide>
+      <ion-img class="image-m" src="./assets/img/lite.png"></ion-img>
+      <h2 class="ion-padding">دانلودر کتاب‌های زبان اصلی</h2>
+      <p> بهترین نرم افزار جستجو و دانلود کتاب</p>
+      <ion-button expand="true" (click)="next()" color="light">
+        اپلیکیشن بعدی
+      </ion-button>
+
+    </ion-slide>
+
+    <ion-slide>
+      <ion-img class="image-m" src="./assets/img/nc.png"></ion-img>
+      <h2 class="ion-padding">اپلیکیشن ثبت عدم انطباق</h2>
+      <p> اولین اپلیکیشن گزارش عدم انطباق در ایران</p>
+      <ion-button expand="block" (click)="start()" color="light">
+        ورود به اپلیکیشن
+      </ion-button>
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>
