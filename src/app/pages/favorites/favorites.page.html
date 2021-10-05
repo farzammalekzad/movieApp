@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>favorites</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>لیست علاقمندی‌ها</ion-title>
+    <ion-buttons (click)="removeAll()" slot="end">
+      <ion-button fill="clear" >
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content dir="ltr">
+  <ion-list>
+    <ion-item button *ngFor="let item of favorites" [routerLink]="['/', 'movies', item.imdbID]">
+      <ion-avatar slot="start">
+        <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
+      </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ item.Title }}</h3>
+        {{ item.Year }}
+      </ion-label>
+
+      <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="game-controller"></ion-icon>
+
+    </ion-item>
+
+  </ion-list>
+
 
 </ion-content>

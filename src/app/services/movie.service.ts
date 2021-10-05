@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {MovieDetail} from '../pages/movie-details/movie-details.page';
+import {Storage} from '@capacitor/storage';
 
 export enum SearchType {
   all = '',
@@ -23,6 +25,7 @@ export interface Results {
 export class MovieService {
   url = 'http://www.omdbapi.com/';
   apiKey = '212207a5';
+  FAVOR_KEY = 'favorites';
 
   // @ts-ignore
   searchResults = new BehaviorSubject<Results>([]);
@@ -41,5 +44,52 @@ export class MovieService {
   getDetails(id)  {
     return this.http.get(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
   }
+
+  async addFavor(movieDetail: MovieDetail) {
+    const status = await this.checkFavor(movieDetail.imdbID);
+    console.log(status);
+    if (!status) {
+      const favorites = await this.getFavorAsArray();
+      favorites.push(movieDetail);
+      console.log('new favorites');
+      await Storage.set({key: this.FAVOR_KEY, value: JSON.stringify(favorites)});
+      return status;
+    }
+    return status;
+
+  }
+
+  async clearFavor() {
+    await Storage.remove({key: this.FAVOR_KEY});
+  }
+
+  getFavor(): Promise<MovieDetail[]> {
+    return this.getFavorAsArray();
+  }
+
+  async checkFavor(id: string) {
+    let status = false;
+    await this.getFavorAsArray().then((favoritesArr) => {
+      favoritesArr.filter((movie) => {
+        if (movie.imdbID == id) {
+          console.log('yes');
+          status = true;
+        }
+      });
+    });
+     return status;
+  }
+
+
+  private async getFavorAsArray(): Promise<MovieDetail[]> {
+    const favorites = await Storage.get({key: this.FAVOR_KEY});
+    let favoritesArr = [];
+    if (favorites.value) {
+      favoritesArr = JSON.parse(favorites.value);
+      return favoritesArr;
+    }
+    return [];
+  }
+
 
 }
