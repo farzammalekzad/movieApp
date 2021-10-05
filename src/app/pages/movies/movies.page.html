@@ -1,28 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>جستجوی فیلم و سریال</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>نتایج جستجو</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <ion-img src="../../assets/img/lite.png"></ion-img>
-  <ion-searchbar dir="ltr" [(ngModel)]="searchTerm" (click)="searchChanged()"></ion-searchbar>
-  <ion-input dir="ltr" [(ngModel)]="searchTerm" id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="6" pattern="^[\u0000-\u007F]+$"></ion-input>
-
-  <ion-item>
-    <ion-label>انتخاب نوع جستجو</ion-label>
-    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
-      <ion-select-option value="">همه</ion-select-option>
-      <ion-select-option value="movie">فیلم</ion-select-option>
-      <ion-select-option value="series">سریال‌ها</ion-select-option>
-      <ion-select-option value="episode">قسمت</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-list>
-
-    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'movies', item.imdbID]">
+<ion-content dir="ltr">
+<ion-list>
+    <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item.imdbID]">
       <ion-avatar slot="start">
         <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
       </ion-avatar>

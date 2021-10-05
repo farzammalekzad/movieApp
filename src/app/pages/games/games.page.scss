@@ -1,0 +1,28 @@
+*{
+  font-family: IranSans !important;
+}
+
+.image-m {
+  width: 150px;
+  height: 150px;
+}
+
+.image-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  --background: var(--ion-color-warning);
+  --ion-text-color: #fff;
+}
+
+ion-content {
+  --background: var(--ion-color-warning);
+  --ion-text-color: #fff;
+}
+
+ion-img {
+  --background: var(--ion-color-warning);
+  --ion-text-color: #fff;
+}
+

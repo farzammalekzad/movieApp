@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MovieService} from '../../services/movie.service';
+import {MovieService, Results} from '../../services/movie.service';
 import {Observable} from 'rxjs';
 import {SearchType} from '../../services/movie.service';
 
@@ -9,17 +9,16 @@ import {SearchType} from '../../services/movie.service';
   styleUrls: ['./movies.page.scss'],
 })
 export class MoviesPage implements OnInit {
-  results: Observable<any>;
-  searchTerm = '';
-  type: SearchType = SearchType.all;
+
+  results: Results;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.movieService.getAllSearchResults().subscribe(res => {
+      this.results = res;
+    });
   }
 
-  searchChanged() {
-    this.results = this.movieService.searchData(this.searchTerm, this.type);
-  }
 
 }

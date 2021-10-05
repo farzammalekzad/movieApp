@@ -3,45 +3,204 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ information?.Genre }}</ion-title>
+    <ion-title>جزییات</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
-  <ion-card *ngIf="information">
-    <ion-card-header>
-      <ion-card-title>
-        {{ information.Title }}
-      </ion-card-title>
-      <ion-card-subtitle>
-        {{ information.Year }}
-      </ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content text-center>
-      <img [src]="information.Poster" class="info-img">
-      {{ information.Plot }}
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner color="secondary"></ion-spinner>
+  </div>
 
-      <ion-item lines="none">
-        <ion-icon name="star-half" slot="start"></ion-icon>
-        <ion-label>{{ information.imdbRating }}</ion-label>
-      </ion-item>
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2" class="ion-text-center">
+        <ion-img src='{{information.Poster}}'></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="reorder-four"></ion-icon>
+          <ion-label><h2>عنوان:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Title}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="trophy"></ion-icon>
+          <ion-label><h2>جوایز دریافت شده:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{information.Awards}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="reader"></ion-icon>
+          <ion-label><h2>نویسنده :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Writer}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="people-circle"></ion-icon>
+          <ion-label><h2>بازیگران اصلی :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Actors}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="calendar-number"></ion-icon>
+          <ion-label><h2>سال انتشار :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Released}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="pencil"></ion-icon>
+          <ion-label><h2>ژانر :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Genre}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="language"></ion-icon>
+          <ion-label><h2>زبان :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Language}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="shield-half"></ion-icon>
+          <ion-label><h2>کشور سازنده:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Country}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="chatbox"></ion-icon>
+          <ion-label><h2>داستان :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Plot}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="clipboard"></ion-icon>
+          <ion-label><h2>کارگردان :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Director}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="logo-medium"></ion-icon>
+          <ion-label><h2>نمره متااسکور:</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Metascore}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="logo-web-component"></ion-icon>
+          <ion-label><h2>نمره سایت‌های معتبر :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none" *ngFor="let rate of information.Ratings">
+          <ion-text>{{rate.Source}} : {{rate.Value}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="checkbox"></ion-icon>
+          <ion-label><h2>باکس آفیس :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.BoxOffice}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="hourglass"></ion-icon>
+          <ion-label><h2>زمان :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.Runtime}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="videocam"></ion-icon>
+          <ion-label><h2>نمره IMDB</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.imdbRating}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-icon name="bookmark"></ion-icon>
+          <ion-label><h2>رای‌های IMDB</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="full">
+          <ion-text>{{information.imdbVotes}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="ion-margin" color="primary" expand="block" type="button" *ngIf="information.Website && information.Website != 'N/A'" (click)="openWebsite()">وب سایت رسمی</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-      <ion-item lines="none">
-        <ion-icon name="clipboard" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.Director }}</ion-label>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-icon name="contacts" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.Actors }}</ion-label>
-      </ion-item>
-
-      <ion-button expand="full" (click)="openWebsite()" *ngIf="information.Website && information.Website != 'N/A'">
-        <ion-icon name="open" slot="start"></ion-icon>
-        Open Website
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
 
 </ion-content>

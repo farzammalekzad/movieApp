@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'menu',
     loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule),
     canActivate: [IntroGuard]
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
   }
 ];
 
