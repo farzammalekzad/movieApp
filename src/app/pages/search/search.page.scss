@@ -2,17 +2,34 @@
   font-family: IranSans !important;
 }
 
-.image-m {
-  width: 150px;
-  height: 150px;
+ion-img {
+  width: 100px;
+  height: 100px;
 }
 
 .image-set {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+}
+.searchBox {
+  margin: 1em;
+  margin-top: 10vh;
+  background: #ffffffe8;
+  border-radius: 15px;
+  border: 2px solid var(--ion-color-dark);
 }
 
+ion-content {
+  --background: none;
+  background-image: url("../../../assets/img/login.jpeg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ion-item {
+  --ion-item-background: none;
+}
 
 

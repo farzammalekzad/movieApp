@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,32 +8,38 @@
 </ion-header>
 
 <ion-content class="ion-padding" >
-  <ion-grid>
-    <ion-row>
-      <ion-col size-sm="12" size-md="8" offset-md="2">
-        <ion-item class="image-set">
-          <ion-img src="../../assets/img/movie.png" class="ion-padding"></ion-img>
-          <ion-label color="dark" position="floating">عنوان فیلم و سریال به زبان انگلیسی</ion-label>
-          <ion-input dir="ltr" [(ngModel)]="searchWord" id="search" name="title" type="text" color="dark" pattern="^[\u0000-\u007F]+$"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="12" size-md="8" offset-md="2">
-        <ion-item>
-          <ion-label>مشخص نمودن جستجو</ion-label>
-          <ion-select [(ngModel)]="type">
-            <ion-select-option value="movie">فیلم</ion-select-option>
-            <ion-select-option value="series">سریال‌</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button class="ion-margin ion-padding" color="primary" expand="block" (click)="searching()">جستجو</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="searchBox">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="12" size-md="8" offset-md="2">
+          <ion-item class="image-set">
+
+            <ion-img src="../../assets/img/movie.png" class="ion-padding"></ion-img>
+
+            <ion-label color="dark" position="floating">عنوان به زبان انگلیسی</ion-label>
+            <ion-input dir="ltr" [(ngModel)]="searchWord" id="search" name="title" type="text" color="dark" pattern="^[\u0000-\u007F]+$"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="12" size-md="8" offset-md="2">
+          <ion-item>
+            <ion-label>نوع جستجو</ion-label>
+            <ion-select [(ngModel)]="type">
+              <ion-select-option value="movie">فیلم</ion-select-option>
+              <ion-select-option value="series">سریال‌</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button class="ion-margin ion-padding" color="dark" expand="block" fill="outline" shape="round" (click)="searching()">جستجو</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div>
 
 </ion-content>

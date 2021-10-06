@@ -51,7 +51,6 @@ export class MovieService {
     if (!status) {
       const favorites = await this.getFavorAsArray();
       favorites.push(movieDetail);
-      console.log('new favorites');
       await Storage.set({key: this.FAVOR_KEY, value: JSON.stringify(favorites)});
       return status;
     }
@@ -78,6 +77,13 @@ export class MovieService {
       });
     });
      return status;
+  }
+
+   async removeFavorById(id: string) {
+    let newFavorites = [];
+    const favorites = await this.getFavorAsArray();
+    newFavorites = favorites.filter((x) => x.imdbID != id);
+    return await Storage.set({key: this.FAVOR_KEY, value: JSON.stringify(newFavorites)});
   }
 
 

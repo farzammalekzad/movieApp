@@ -1,30 +1,36 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>نتایج جستجو</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content dir="ltr">
-<ion-list>
-    <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item.imdbID]">
-      <ion-avatar slot="start">
-        <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
-      </ion-avatar>
+  <div class="movieBox">
+    <div class="notFound" *ngIf="!results">
+      <p>نتیجه ای یافت نشد</p>
+    </div>
+    <ion-list *ngIf="results">
+      <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item.imdbID]">
+        <ion-avatar slot="start">
+          <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
+        </ion-avatar>
 
-      <ion-label text-wrap>
-        <h3>{{ item.Title }}</h3>
-        {{ item.Year }}
-      </ion-label>
+        <ion-label text-wrap>
+          <h3>{{ item.Title }}</h3>
+          {{ item.Year }}
+        </ion-label>
 
-      <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
-      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="game-controller"></ion-icon>
+        <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
+        <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
+        <ion-icon slot="end" *ngIf="item.Type == 'game'" name="game-controller"></ion-icon>
 
-    </ion-item>
+      </ion-item>
 
-  </ion-list>
+    </ion-list>
+  </div>
+
 
 </ion-content>
