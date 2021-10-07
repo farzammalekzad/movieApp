@@ -14,7 +14,7 @@
   </div>
 
   <ion-grid *ngIf="!isLoading">
-    <ion-row>
+    <ion-row *ngIf="information.Poster && information.Poster != 'N/A'">
       <ion-col size-sm = 12 size-md="8" offset-md = "2" class="ion-text-center">
         <ion-img src='{{information.Poster}}'></ion-img>
       </ion-col>

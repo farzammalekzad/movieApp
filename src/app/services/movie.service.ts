@@ -25,6 +25,7 @@ export interface Results {
 export class MovieService {
   url = 'http://www.omdbapi.com/';
   apiKey = '212207a5';
+  apiKeyTwo = '6010597f';
   FAVOR_KEY = 'favorites';
 
   // @ts-ignore
@@ -37,7 +38,7 @@ export class MovieService {
   }
 
   searchData(title: string, type: SearchType): Observable<any> {
-    return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`)
+    return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKeyTwo}`)
       .pipe(map(res => this.searchResults.next(res['Search'])));
   }
 
