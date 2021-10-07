@@ -4,8 +4,10 @@ ion-slide {
 }
 
 ion-content {
-  --background: var(--ion-color-secondary);
+  --background: var(--ion-color-primary);
+  background-size: cover;
   --ion-text-color: #fff;
+
 }
 
 ion-img {
@@ -24,4 +26,8 @@ h2{
 
 .slider {
 
+}
+
+.ncImg {
+  border: 2px solid black;
 }
