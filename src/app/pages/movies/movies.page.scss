@@ -4,22 +4,25 @@ ion-label {
 
 ion-content {
   --background: none;
-  background-position: center top;
+  background-image: url("../../../assets/img/result.jpeg");
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .notFound {
   display: flex;
-  color: var(--ion-color-primary);
+  color: var(--ion-color-dark);
+  text-emphasis: #1e2023;
   justify-content: center;
   align-content: center;
 }
 
-.movieBox {
-  background: #ffffffe8;
+ion-list {
+  --ion-background-color: none;
 }
-ion-item {
-  --ion-item-background: none !important;
+
+.coloring {
+  color: white;
 }
 

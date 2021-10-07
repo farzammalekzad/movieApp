@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieService, SearchType} from '../../services/movie.service';
 import {ActivatedRoute} from '@angular/router';
-import {ToastController} from "@ionic/angular";
+import {ToastController} from '@ionic/angular';
 
 export interface Ratings {
   Source: string;
@@ -48,14 +48,13 @@ export class MovieDetailsPage implements OnInit {
 
   constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute, private toastCtrl: ToastController) { }
 
-  async ngOnInit() {
+   ngOnInit() {
     this.isLoading = true;
-    this.activatedRoute.paramMap.subscribe((data) => {
-      return this.movieService.getDetails(data.get('id')).subscribe((info) => {
-        console.log(info);
-        this.information = info;
+    return this.activatedRoute.paramMap.subscribe((data) => {
+      this.movieService.getDetails(data.get('id')).subscribe((detail) => {
+        this.information = detail;
         this.isLoading = false;
-       });
+      });
     });
   }
 

@@ -30,10 +30,10 @@ export class FavoritesPage implements OnInit {
       duration: 1000
     });
     const confirmAlert = await this.alertCtrl.create({
-      header: 'حذف تمامی علاقمندی‌ها',
+      header: 'حذف تمامی علاقمندی‌ها!',
       message: 'آیا اطمینان دارید؟',
       buttons: [{
-        text: 'باشه',
+        text: 'بله',
         handler: () => {
           return this.movieService.clearFavor().then(() => {
             infoToast.present();

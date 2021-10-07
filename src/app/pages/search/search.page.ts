@@ -33,4 +33,8 @@ export class SearchPage implements OnInit {
 
   }
 
+  getLastResult() {
+    this.router.navigateByUrl('/movies');
+  }
+
 }

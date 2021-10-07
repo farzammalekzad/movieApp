@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content dir="ltr">
-  <div class="movieBox">
     <div class="notFound" *ngIf="!results">
       <p>نتیجه ای یافت نشد</p>
     </div>
@@ -18,7 +17,7 @@
           <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
         </ion-avatar>
 
-        <ion-label text-wrap>
+        <ion-label text-wrap class="coloring">
           <h3>{{ item.Title }}</h3>
           {{ item.Year }}
         </ion-label>
@@ -30,7 +29,7 @@
       </ion-item>
 
     </ion-list>
-  </div>
+
 
 
 </ion-content>

@@ -41,8 +41,16 @@ export class MovieService {
       .pipe(map(res => this.searchResults.next(res['Search'])));
   }
 
-  getDetails(id)  {
+   getDetails(id): Observable<MovieDetail>  {
     return this.http.get(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
+  }
+
+  async getDetailsByStorage(id): Promise<MovieDetail> {
+    const favorites = await this.getFavorAsArray();
+    const filteredFavor = favorites.filter((fav) => {
+      fav.imdbID = id;
+    });
+    return filteredFavor[0];
   }
 
   async addFavor(movieDetail: MovieDetail) {
@@ -66,7 +74,7 @@ export class MovieService {
     return this.getFavorAsArray();
   }
 
-  async checkFavor(id: string) {
+  async checkFavor(id: string): Promise<boolean> {
     let status = false;
     await this.getFavorAsArray().then((favoritesArr) => {
       favoritesArr.filter((movie) => {

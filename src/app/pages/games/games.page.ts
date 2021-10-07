@@ -29,8 +29,10 @@ export class GamesPage implements OnInit {
       this.router.navigateByUrl('/movies');
     });
 
+  }
 
-
+  getResults() {
+    this.router.navigateByUrl('/movies');
   }
 
 
