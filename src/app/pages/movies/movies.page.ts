@@ -10,7 +10,7 @@ import {SearchType} from '../../services/movie.service';
 })
 export class MoviesPage implements OnInit {
 
-  results: Results;
+  results;
 
   constructor(private movieService: MovieService) { }
 

@@ -12,19 +12,19 @@
       <p>نتیجه ای یافت نشد</p>
     </div>
     <ion-list *ngIf="results">
-      <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item.imdbID]">
+      <ion-item button *ngFor="let item of results" [routerLink]="['/', 'movies', item?.imdbID]">
         <ion-avatar slot="start">
-          <img [src]="item.Poster" *ngIf="item.Poster != 'N/A'">
+          <img [src]="item?.Poster" *ngIf="item?.Poster != 'N/A'">
         </ion-avatar>
 
         <ion-label text-wrap class="coloring">
-          <h3>{{ item.Title }}</h3>
-          {{ item.Year }}
+          <h3>{{ item?.Title }}</h3>
+          {{ item?.Year }}
         </ion-label>
 
-        <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
-        <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
-        <ion-icon slot="end" *ngIf="item.Type == 'game'" name="game-controller"></ion-icon>
+        <ion-icon slot="end" *ngIf="item?.Type == 'movie'" name="videocam"></ion-icon>
+        <ion-icon slot="end" *ngIf="item?.Type == 'series'" name="tv"></ion-icon>
+        <ion-icon slot="end" *ngIf="item?.Type == 'game'" name="game-controller"></ion-icon>
 
       </ion-item>
 
