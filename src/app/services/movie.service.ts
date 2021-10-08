@@ -56,7 +56,6 @@ export class MovieService {
 
   async addFavor(movieDetail: MovieDetail) {
     const status = await this.checkFavor(movieDetail.imdbID);
-    console.log(status);
     if (!status) {
       const favorites = await this.getFavorAsArray();
       favorites.push(movieDetail);
@@ -80,7 +79,6 @@ export class MovieService {
     await this.getFavorAsArray().then((favoritesArr) => {
       favoritesArr.filter((movie) => {
         if (movie.imdbID == id) {
-          console.log('yes');
           status = true;
         }
       });

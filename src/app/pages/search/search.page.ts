@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MovieService, Results, SearchType} from '../../services/movie.service';
-import {LoadingController} from "@ionic/angular";
-import {Router} from "@angular/router";
+import {AlertController, LoadingController} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {Network} from '@capacitor/network';
 
 @Component({
   selector: 'app-search',
@@ -13,9 +14,13 @@ export class SearchPage implements OnInit {
   searchWord = '';
   type: SearchType = SearchType.movie;
 
-  constructor(private movieService: MovieService, private loadingCtrl: LoadingController, private router: Router) { }
+  constructor(private movieService: MovieService,
+              private loadingCtrl: LoadingController,
+              private router: Router,
+              private alertCtrl: AlertController) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.logCurrentStatus();
 
   }
 
@@ -36,5 +41,17 @@ export class SearchPage implements OnInit {
   getLastResult() {
     this.router.navigateByUrl('/movies');
   }
+
+  logCurrentStatus = async () => {
+    const status = await Network.getStatus();
+    if (!status.connected) {
+      const alert = await this.alertCtrl.create({
+        header: 'اتصال به اینترنت',
+        message: 'شما به اینترنت متصل نمی باشید',
+        buttons: ['باشه']
+      });
+      await alert.present();
+    }
+  };
 
 }
