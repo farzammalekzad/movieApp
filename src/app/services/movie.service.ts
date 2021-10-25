@@ -39,7 +39,7 @@ export class MovieService {
 
   searchData(title: string, type: SearchType): Observable<any> {
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKeyTwo}`)
-      .pipe(map(res => this.searchResults.next(res['Search'])));
+      .pipe(map((res) => this.searchResults.next(res['Search'])));
   }
 
    getDetails(id): Observable<MovieDetail>  {

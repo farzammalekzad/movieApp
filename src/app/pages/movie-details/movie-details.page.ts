@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MovieService, SearchType} from '../../services/movie.service';
 import {ActivatedRoute} from '@angular/router';
 import {ToastController} from '@ionic/angular';
+import {Share} from '@capacitor/share';
 
 export interface Ratings {
   Source: string;
@@ -72,5 +73,13 @@ export class MovieDetailsPage implements OnInit {
         toast.present();
       }
     });
+  }
+
+  async share(data: MovieDetail) {
+    await Share.share({
+      text: data.Title,
+      url: 'https://cafebazaar.ir/app/ir.malekzad.mohammad.moviebank'
+    });
+
   }
 }
